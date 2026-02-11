@@ -1,0 +1,21 @@
+Fixed point: 
+
+val * nb de bits = int val_
+
+premiere moitié des bits de val == avant la virgule
+deuxieme moitié == apres la virgule
+
+donc si 
+
+8421
+
+0011		== 3
+0000		== 
+
+
+1/2
+1/4
+1/8
+1/16
+
+
