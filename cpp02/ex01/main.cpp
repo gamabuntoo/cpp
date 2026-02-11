@@ -37,9 +37,9 @@ int	main(void)
 // int main( void )
 // {
 // 	Fixed a;
-// //	Fixed b( a );
+//	Fixed b( a );
 // 	Fixed c;
-// 	Fixed b(4.4f);
+// 	Fixed b(5.456f);
 // 	Fixed g(4);
 
 // 	c = a;
@@ -47,6 +47,6 @@ int	main(void)
 // 	std::cout << b.getRawBits() << std::endl;
 // 	std::cout << c.getRawBits() << std::endl;
 // 	std::cout << g.toInt() << std::endl;
-// 	std::cout << b.toInt() << std::endl;
-// 	return (0);
+// 	std::cout << b.toFloat() << std::endl;
+	// return (0);
 // }

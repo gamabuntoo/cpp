@@ -23,7 +23,7 @@ Fixed::Fixed(const int i)
 Fixed::Fixed(const float f)
 {
 	std::cout << "Float Constructor Called" << std::endl;
-	this->_val = (int)f * (this->_fract * 32);
+	this->_val = f * (this->_fract * 32);
 }
 
 Fixed::Fixed(void): _val(0)
@@ -31,7 +31,7 @@ Fixed::Fixed(void): _val(0)
 	std::cout << "Default Constructor Called" << std::endl;
 }
 
-Fixed::Fixed(Fixed &f)
+Fixed::Fixed(const Fixed &f)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = f;
@@ -62,27 +62,16 @@ void    Fixed::setRawBits(int const raw)
 
 int		Fixed::toInt(void) const
 {
-	int x = this->_val / (this->_fract * 32);
-
-	std::stringstream st;
-	std::string str;
-	st << x;
-	st>>str;
-	std::cout << "toInt called, int is: " << str << std::endl;
-	return (x);
+	return this->_val / (this->_fract * 32);
 }
 
 float	Fixed::toFloat(void) const
 {
-	float x;
-	
-	x = ((this->_val) / (float)(1 << this->_fract));
-	// y = static_cast<float>(this->_val) / (1 << this->_fract*2);
-	// x += y/10;
-	std::stringstream st;
-	std::string str;
-	st << x;
-	st>>str;
-	std::cout << "toFloat called, float is: " << str << std::endl;
-	return (x);
+	return (static_cast<float>(this->_val) / (1 << this->_fract));
+}
+		
+std::ostream &operator<<(std::ostream &os, Fixed const &f)
+{
+	os << f.toFloat();
+	return os;
 }

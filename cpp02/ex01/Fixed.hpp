@@ -23,9 +23,9 @@ class   Fixed
         static const int    _fract = 8;
     public:
         Fixed(void);
-        Fixed(Fixed &f);
         Fixed(const int f);
         Fixed(const float f);
+        Fixed(const Fixed &f);
         Fixed   &operator=(const Fixed &f);
         ~Fixed();
 
@@ -34,5 +34,7 @@ class   Fixed
         float   toFloat(void) const;
         int     toInt(void) const;
 };
+	
+std::ostream &operator<<(std::ostream &os, Fixed const &f);
 
 #endif
