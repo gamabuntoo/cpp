@@ -14,12 +14,6 @@
 
 // static const int    Fixed::_fract = 8;
 
-//float	Fixed::toFloat(void) const
-//{
-
-
-//}
-
 Fixed::Fixed(const int i)
 {
 	std::cout << "Int Constructor Called" << std::endl;
@@ -74,12 +68,21 @@ int		Fixed::toInt(void) const
 	std::string str;
 	st << x;
 	st>>str;
-	std::cout << "toInt called, int rn is: " << str << std::endl;
+	std::cout << "toInt called, int is: " << str << std::endl;
 	return (x);
 }
 
 float	Fixed::toFloat(void) const
 {
-	float x = this->_val / (this->_fract * 32);
-	return x;
+	float x;
+	
+	x = ((this->_val) / (float)(1 << this->_fract));
+	// y = static_cast<float>(this->_val) / (1 << this->_fract*2);
+	// x += y/10;
+	std::stringstream st;
+	std::string str;
+	st << x;
+	st>>str;
+	std::cout << "toFloat called, float is: " << str << std::endl;
+	return (x);
 }
