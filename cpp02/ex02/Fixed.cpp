@@ -16,30 +16,30 @@
 
 Fixed::Fixed(const int i)
 {
-	std::cout << "Int Constructor Called" << std::endl;
+	// std::cout << "Int Constructor Called" << std::endl;
 	this->_val = i * (this->_fract * 32);
 }
 
 Fixed::Fixed(const float f)
 {
-	std::cout << "Float Constructor Called" << std::endl;
-	this->_val = f * (this->_fract * 32);
+	// std::cout << "Float Constructor Called" << std::endl;
+	this->_val = f * (this->_fract * 32); // roundf() a utiliser peut etre;
 }
 
 Fixed::Fixed(void): _val(0)
 {
-	std::cout << "Default Constructor Called" << std::endl;
+	// std::cout << "Default Constructor Called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &f)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
 	*this = f;
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor Called" << std::endl;
+	// std::cout << "Destructor Called" << std::endl;
 }
 
 Fixed   &Fixed::operator=(const Fixed &f)
@@ -51,7 +51,7 @@ Fixed   &Fixed::operator=(const Fixed &f)
 
 int	Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member funct called" << std::endl;
+	// std::cout << "getRawBits member funct called" << std::endl;
 	return (this->_val);
 }
 
