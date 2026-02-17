@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 			else
 				std::cout << stri[j];
 		}
-		std::cout << std::endl;
 	}
+	std::cout << std::endl;
 	return (0);
 }
