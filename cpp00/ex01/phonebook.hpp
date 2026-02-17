@@ -39,26 +39,53 @@ class Contact {
 
 		std::cout << "Insert first name:\t";
 		getline(std::cin, FirstName);
+		while (FirstName == "")
+		{
+			std::cout << "enter non empty name :";
+			getline(std::cin, FirstName);
+		}
 		std::cout << std::endl;
 
 		std::cout << "Insert last name:\t";
 		getline(std::cin, LastName);
+		while (LastName == "")
+		{
+			std::cout << "enter non empty last name :";
+			getline(std::cin, LastName);
+		}
 		std::cout << std::endl;
 
 		std::cout << "Insert nickname:\t";
 		getline(std::cin, Nickname);
+		while (Nickname == "")
+		{
+			std::cout << "enter non empty nickname :";
+			getline(std::cin, Nickname);
+		}
 		std::cout << std::endl;
 
 		std::cout << "Insert number:\t\t";
 		getline(std::cin, str);
 		num = atoll(str.c_str());
-		if (num > 9999999999)
-			num = 0;
-		std::cout << num << std::endl;
+		while (num == 0)
+		{
+			std::cout << "enter numbers only (0 not included):";
+			getline(std::cin, str);
+			num = atoll(str.c_str());
+			if (num > 9999999999)
+				num = 0;
+		}
+		std::cout << std::endl;
 
 		std::cout << "Insert Darkest Secret:\t";
 		getline(std::cin, Secret);
+		while (Secret == "")
+		{
+			std::cout << "enter non empty secret :\n";
+			getline(std::cin, Secret);
+		}
 		std::cout << std::endl;
+
 	}
 
 	void	read_name()
