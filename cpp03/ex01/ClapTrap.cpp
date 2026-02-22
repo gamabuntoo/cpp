@@ -86,7 +86,10 @@ void    ClapTrap::attack(const std::string target)
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_health == 0)
+	{
 		std::cout << "ClapTrap " << this->_name << " can't be attacked, he's already dead" << std::endl;
+		return ;
+	}
 	else if (this->_health >= 1)
 	{
 		int x = this->_health;
@@ -98,7 +101,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		print_hp();
 	}
 	if (this->_health == 0)
-		std::cout << "C̵͍͗̇l̴̪͙̑ǎ̸̬̂p̷̤͂̔Ţ̴͚̇͂ŗ̸̓a̷̗͝p̸̞͍͋̋ ̸̥͌̓" << this->_name << "is now ͚d̶̡͔͊è̵̥̀a̷̙͂̄d̴͖̝͊͊ " << std::endl;
+		std::cout << "C̵͍͗̇l̴̪͙̑ǎ̸̬̂p̷̤͂̔Ţ̴͚̇͂ŗ̸̓a̷̗͝p̸̞͍͋̋ ̸̥͌̓" << this->_name << " is now ,͚ dead " << std::endl;
 
 }
 

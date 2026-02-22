@@ -32,6 +32,18 @@ ScavTrap::~ScavTrap(void)
 {
 	std::cout << "CL4P-TP MODEL: ScavTrap " << this->get_name() << " destroyed" << std::endl;
 }
+
+ScavTrap &ScavTrap::operator=(ScavTrap &bot)
+{
+
+    this->get_name() = bot.get_name();
+	this->get_health() = bot.get_health();
+    this->get_ad() = bot.get_ad();
+    this->get_energy() = bot.get_energy();
+    std::cout << "Info " << bot.get_name() << " ScavTrap SUCCESSFULLY COPIED (=)" << std::endl;
+    return (*this);
+}
+
 void	ScavTrap::attack(const std::string target)
 {
     if (this->get_health() == 0)
@@ -53,6 +65,11 @@ void	ScavTrap::guardGate()
 {
 	static int	gate = 0;
 
+	if (this->get_health() == 0)
+	{
+		std::cout << "CL4P-TP: Model ScavTrap: " << this->get_name() << " can't go in gate keeper mode right now." << std::endl;
+		return ;
+	}
 	gate++;
 	if (gate > 1)
 	{
