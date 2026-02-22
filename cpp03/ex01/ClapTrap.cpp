@@ -89,11 +89,12 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		std::cout << "ClapTrap " << this->_name << " can't be attacked, he's already dead" << std::endl;
 	else if (this->_health >= 1)
 	{
+		int x = this->_health;
 		if (this->_health <= amount)
 			this->_health = 0;
 		else
 			this->_health -= amount;
-		std::cout << "ClapTrap " << this->_name << " with " << this->_health <<"HP took " << amount << " damages!" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " with " << x <<"HP took " << amount << " damages!" << std::endl;
 		print_hp();
 	}
 	if (this->_health == 0)
@@ -103,7 +104,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void    ClapTrap::beRepaired(unsigned int amount)
 {
-	if (amount == 0 || this->_energy == 0)
+	if (amount == 0 || this->_energy == 0 || this->_health == 100)
 		std::cout << "ClapTrap " << this->_name << " can't be repaired for the moment" << std::endl;
 	if (this->_health >= 1)
 	{
@@ -114,4 +115,22 @@ void    ClapTrap::beRepaired(unsigned int amount)
 	}
 	if (this->_health == 0)
 		std::cout << "C̵͍͗̇l̴̪͙̑ǎ̸̬̂p̷̤͂̔Ţ̴͚̇͂ŗ̸̓a̷̗͝p̸̞͍͋̋ ̸̥͌̓" << this->_name << " is ͚d̶̡͔͊è̵̥̀a̷̙͂̄d̴͖̝͊͊  so he can't be repaired" << std::endl;
+}
+
+std::string		&ClapTrap::get_name(void)
+{
+	return (this->_name);
+}		
+
+unsigned int	&ClapTrap::get_health(void)
+{
+	return (this->_health);
+}
+unsigned int	&ClapTrap::get_energy(void)
+{
+	return (this->_energy);
+}
+unsigned int	&ClapTrap::get_ad(void)
+{
+	return (this->_ad);
 }

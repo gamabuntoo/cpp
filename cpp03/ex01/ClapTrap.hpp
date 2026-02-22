@@ -22,6 +22,11 @@ class   ClapTrap
 		unsigned int	_health;
 		unsigned int	_energy;
 		unsigned int	_ad;
+	protected:
+		std::string		&get_name(void);
+		unsigned int	&get_health(void);
+		unsigned int	&get_energy(void);
+		unsigned int	&get_ad(void);
 	public:
 		ClapTrap(void);
 		ClapTrap(std::string id);
@@ -37,18 +42,18 @@ class   ClapTrap
 		void	print_hp(void);
 };
 
-class	ScavTrap : public ClapTrap
-{
-	private:
-		bool	guard;
-	public:
-		ScavTrap(void);
-		ScavTrap(std::string id);
-		ScavTrap(ClapTrap &bot);
-		~ScavTrap(void);
-		void	attack(const std::string target);
-		void	guardGate();
+// class	ScavTrap : public ClapTrap
+// {
+// 	private:
+// 		bool	guard;
+// 	public:
+// 		ScavTrap(void);
+// 		ScavTrap(std::string id);
+// 		ScavTrap(ClapTrap &bot);
+// 		~ScavTrap(void);
+// 		void	attack(const std::string target);
+// 		void	guardGate();
 
-}
+// };
 
 #endif

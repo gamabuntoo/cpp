@@ -21,35 +21,45 @@ ScavTrap::ScavTrap(std::string id) : ClapTrap(id)
 	std::cout << "CL4P-TP MODEL: ScavTrap created: " << id << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap &bot) : ClapTrap(bot._name)
+ScavTrap::ScavTrap(ScavTrap &bot) : ClapTrap(bot.get_name())
 {
-    this->_health = bot._health;
-    this->_ad = bot._ad;
-    this->_energy = bot._energy;
-	std::cout << "CL4P-TP MODEL: ScavTrap created: " << this->_name << std::endl;
+    this->get_health() = bot.get_health();
+    this->get_ad() = bot.get_ad();
+    this->get_energy() = bot.get_energy();
+	std::cout << "CL4P-TP MODEL: ScavTrap created: " << this->get_name() << std::endl;
 }
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << "CL4P-TP MODEL: ScavTrap" << this->_name << "destroyed" << std::endl;
+	std::cout << "CL4P-TP MODEL: ScavTrap " << this->get_name() << " destroyed" << std::endl;
 }
-void	attack(const std::string target)
+void	ScavTrap::attack(const std::string target)
 {
-    if (this->_health == 0)
-        std::cout << "ScavTrap " << this->_name << " can't attack because he's dead" << std::endl;
-    else if (this->_energy >= 1)
+    if (this->get_health() == 0)
+        std::cout << "ScavTrap " << this->get_name() << " can't attack because he's dead" << std::endl;
+    else if (this->get_energy() >= 1)
     {
-        this->_energy--;
-        std::cout << "ScavTrap " << this->_name << " attacks " << target <<
-			", dealing "<< this->_ad << " points of damage!" << std::endl;
-		if (this->_energy == 0)
-			std::cout << "ScavTrap " << this->_name << " have no energy left after this attack" << std::endl;
+		unsigned int *x  = &this->get_energy();
+		*x -= 1;
+        std::cout << "ScavTrap " << this->get_name() << " attacks " << target <<
+			", dealing "<< this->get_ad() << " points of damage!" << std::endl;
+		if (this->get_energy() == 0)
+			std::cout << "ScavTrap " << this->get_name() << " have no energy left after this attack" << std::endl;
     }
     else
-        std::cout << "C̴C̶c̸L̸L̵.̴44P.̴T̵t̷T̷t̶ ̵ ̵p̷  MODEL: ScavTrap " << this->_name << ",̵  ̴ ̴ ̵ ̵ ̵ ̶n̴o̸ ̵e̴n̵e̷r̷g̷y̸ ̵l̵e̶f̴t̶  ̴c̵a̵n̵'̶t̷ ̵a̷t̸t̷a̵c̵k̵" << std::endl;
+        std::cout << "C̴C̶c̸L̸L̵.̴44P.̴T̵t̷T̷t̶ ̵ ̵p̷  MODEL: ScavTrap " << this->get_name() << ",̵  ̴ ̴ ̵ ̵ ̵ ̶n̴o̸ ̵e̴n̵e̷r̷g̷y̸ ̵l̵e̶f̴t̶  ̴c̵a̵n̵'̶t̷ ̵a̷t̸t̷a̵c̵k̵" << std::endl;
 
 }
-void	guardGate()
+void	ScavTrap::guardGate()
 {
-	
+	static int	gate = 0;
 
+	gate++;
+	if (gate > 1)
+	{
+		std::cout << "CL4P-TP MODEL: ScavTrap " << this->get_name() << " disabled his gate keeper mode" << std::endl;
+		gate = 0;
+		return ;
+	}
+	std::cout << "CL4P-TP MODEL: ScavTrap " << this->get_name() << " is now in gate keeper mode" << std::endl;
+	return ;
 }
