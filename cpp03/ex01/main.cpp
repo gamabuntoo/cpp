@@ -17,6 +17,7 @@ int main(void)
 {
     // ClapTrap bot("rob");
     ScavTrap b("roger");
+	ClapTrap a("serge");
     // ScavTrap serge(b);
     // ScavTrap m;
 	
@@ -26,6 +27,14 @@ int main(void)
 	b.takeDamage(8);
 	b.beRepaired(3);
 	b.guardGate();
+
+	a.attack("roger");
+	a.attack("personne");
+	a.takeDamage(5);
+	a.takeDamage(8);
+	a.beRepaired(3);
+	a.beRepaired(3);
+	a.beRepaired(3);
 	// m.set_name("roger robot");
 	
 	// serge.set_name("Michael droide");

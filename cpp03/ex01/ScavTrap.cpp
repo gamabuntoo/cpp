@@ -14,10 +14,16 @@
 
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
+	this->get_health() = 100;
+    this->get_ad() = 50;
+    this->get_energy() = 20;
 	std::cout << "CL4P-TP MODEL: ScavTrap created: unnamed" << std::endl;
 }
 ScavTrap::ScavTrap(std::string id) : ClapTrap(id)
 {
+	this->get_health() = 100;
+    this->get_ad() = 50;
+    this->get_energy() = 20;
 	std::cout << "CL4P-TP MODEL: ScavTrap created: " << id << std::endl;
 }
 
@@ -71,10 +77,12 @@ void	ScavTrap::guardGate()
 		return ;
 	}
 	gate++;
+	this->guard = 1;
 	if (gate > 1)
 	{
 		std::cout << "CL4P-TP MODEL: ScavTrap " << this->get_name() << " disabled his gate keeper mode" << std::endl;
 		gate = 0;
+		this->guard = 0;
 		return ;
 	}
 	std::cout << "CL4P-TP MODEL: ScavTrap " << this->get_name() << " is now in gate keeper mode" << std::endl;

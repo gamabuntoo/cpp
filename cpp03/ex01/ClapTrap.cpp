@@ -12,7 +12,7 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string id) : _health(100), _energy(50), _ad(20)
+ClapTrap::ClapTrap(std::string id) : _health(10), _energy(10), _ad(0)
 {
     this->_name = id;
     std::cout << "ClapTrap BOT N°" << id << " CREATED" << std::endl;
