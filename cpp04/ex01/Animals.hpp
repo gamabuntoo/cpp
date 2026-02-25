@@ -30,14 +30,6 @@ class Animal
 		virtual	void	makeSound()  const;
 };
 
-class Brain
-{
-	protected:
-		std::string *string;
-	public:
-		Brain();
-};
-
 class Dog : public Animal
 {
 	public:

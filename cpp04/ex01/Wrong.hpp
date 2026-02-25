@@ -1,61 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animals.hpp                                        :+:      :+:    :+:   */
+/*   Wrong.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/25 14:44:58 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/02/25 14:44:58 by gule-bat         ###   ########.fr       */
+/*   Created: 2026/02/25 16:51:17 by gule-bat          #+#    #+#             */
+/*   Updated: 2026/02/25 16:51:17 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMALS_H
-# define ANIMALS_H
+#ifndef WANIMALS_H
+# define WANIMALS_H
 
 #include <iostream>
 
-class Animal
+class WrongAnimal
 {
 	protected:
 		std::string type;
 	public:
-		Animal(void);
-		Animal(std::string type);
-		Animal(const Animal &animal);
-		virtual ~Animal();
-		Animal &operator=(const Animal &animal);
+		WrongAnimal(void);
+		WrongAnimal(std::string type);
+		WrongAnimal(const WrongAnimal &wronganimal);
+		virtual ~WrongAnimal();
+		WrongAnimal &operator=(const WrongAnimal &wronganimal);
 		void setType(std::string type);
 		std::string getType(void) const;
-		virtual	void	makeSound()  const;
+		void	makeSound()  const;
 };
 
-class Brain
-{
-	protected:
-		std::string *string;
-	public:
-		Brain();
-};
-
-class Dog : public Animal
+class WrongCat : public WrongAnimal
 {
 	public:
-		Dog();
-		~Dog();
-		Dog(const Dog &dog);
-		Dog &operator=(const Dog &dog);
-
-		void	makeSound() const;
-};
-
-class Cat : public Animal
-{
-	public:
-		Cat();
-		~Cat();
-		Cat(const Cat &cat);
-		Cat &operator=(const Cat &cat);
+		WrongCat();
+		~WrongCat();
+		WrongCat(const WrongCat &cat);
+		WrongCat &operator=(const WrongCat &cat);
 
 		void	makeSound() const;
 };
