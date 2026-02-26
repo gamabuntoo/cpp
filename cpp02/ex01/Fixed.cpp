@@ -23,7 +23,7 @@ Fixed::Fixed(const int i)
 Fixed::Fixed(const float f)
 {
 	std::cout << "Float Constructor Called" << std::endl;
-	this->_val = f * (this->_fract * 32);
+	this->_val = roundf(f * (this->_fract * 32));
 }
 
 Fixed::Fixed(void): _val(0)
@@ -34,7 +34,7 @@ Fixed::Fixed(void): _val(0)
 Fixed::Fixed(const Fixed &f)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = f;
+	this->_val = f._val;	
 }
 
 Fixed::~Fixed(void)

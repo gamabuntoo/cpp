@@ -15,7 +15,8 @@
 int main( void )
 {
 	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Fixed b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Fixed c(b);
 
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
@@ -25,8 +26,51 @@ int main( void )
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 
+	if (a < b)
+		std::cout << "a < b\n" << std::endl;
+	else
+		std::cout << "b > a" << std::endl;
+	if (b > a)
+		std::cout << "b > a\n" << std::endl;
+	else
+		std::cout << "a > b" << std::endl;
+
+	if (a <= b)
+		std::cout << "a <= b\n" << std::endl;
+	else
+		std::cout << "b >= a" << std::endl;
+	if (b >= a)
+		std::cout << "b >= a\n" << std::endl;
+	else
+		std::cout << "a >= b" << std::endl;
+
+	if (b == c)
+		std::cout << "b == c\n" << std::endl;
+	else	
+		std::cout << "b != c" << std::endl;
+	if (a != c)
+		std::cout << "a != c\n" << std::endl;
+	else	
+		std::cout << "a == c" << std::endl;
+	b = b * Fixed(2);
+	std::cout << "b(10.1016) * 2 = " << b << std::endl;
+	b = b.toFloat() - a.toFloat();
+	Fixed w = Fixed(b.toFloat() - a.toFloat());
+	std::cout << "b(" << b.toFloat() << ") - a(" << a.toFloat() << ") = " << w.toFloat() << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
 
+	b = b / Fixed(2);
+	std::cout << "b / 2 = " << b << std::endl;
+	b = b.toFloat() + a.toFloat();
+	w = Fixed(b.toFloat() - c.toFloat());
+	std::cout << "b(" << b.toFloat() << ") + c(" << c.toFloat() << ") = " << w.toFloat() << std::endl;
+
+
+	std::cout << w << std::endl;
+	std::cout << --w << std::endl;
+	std::cout << w << std::endl;
+	std::cout << w-- << std::endl;
+	std::cout << w << std::endl;
 	return (0);
 }
 

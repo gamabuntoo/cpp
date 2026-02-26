@@ -23,7 +23,7 @@ Fixed::Fixed(const int i)
 Fixed::Fixed(const float f)
 {
 	// std::cout << "Float Constructor Called" << std::endl;
-	this->_val = f * (this->_fract * 32); // roundf() a utiliser peut etre;
+	this->_val = roundf(f * (this->_fract * 32)); // roundf() a utiliser peut etre;
 }
 
 Fixed::Fixed(void): _val(0)
@@ -62,7 +62,7 @@ void    Fixed::setRawBits(int const raw)
 
 int		Fixed::toInt(void) const
 {
-	return this->_val / (this->_fract * 32);
+	return ((this->_val) / (this->_fract * 32));
 }
 
 float	Fixed::toFloat(void) const
