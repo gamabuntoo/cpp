@@ -30,8 +30,22 @@ class Animal
 		virtual	void	makeSound()  const;
 };
 
+class Brain
+{
+	private:
+		std::string *ideas;
+	public:
+		Brain();
+		~Brain();
+		Brain(Brain &brain);
+		std::string	getIdea(unsigned int idx);
+		void	setIdea(unsigned int idx, std::string s);
+};
+
 class Dog : public Animal
 {
+	private:
+		Brain *_brain;
 	public:
 		Dog();
 		~Dog();
@@ -43,6 +57,8 @@ class Dog : public Animal
 
 class Cat : public Animal
 {
+	private:
+		Brain *_brain;
 	public:
 		Cat();
 		~Cat();

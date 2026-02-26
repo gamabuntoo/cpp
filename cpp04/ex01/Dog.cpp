@@ -14,16 +14,26 @@
 
 Dog::Dog(void) : Animal("Dog")
 {
+	this->_brain = NULL;
+	this->_brain = new Brain;
+	if (!this->_brain)
+		std::cout << "Unable to allocate brain in animal dog" << std::endl;
 	std::cout << "Dog created\n";
 }
 
 Dog::Dog(const Dog &dog) : Animal(dog.type)
 {
+	this->_brain = NULL;
+	this->_brain = new Brain;
+	if (!this->_brain)
+		std::cout << "Unable to allocate brain in animal dog" << std::endl;	
 	std::cout << "Dog animal copy created:" << this->type << std::endl;
 }
 
 Dog::~Dog()
 {
+	if (this->_brain != NULL)
+		delete this->_brain;
 	std::cout << "Dog destroyed" << this->type << std::endl;
 }
 
