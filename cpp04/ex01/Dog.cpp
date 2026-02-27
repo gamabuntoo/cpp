@@ -40,7 +40,11 @@ Dog::~Dog()
 Dog &Dog::operator=(const Dog &dog)
 {
 	if (this != &dog)
+	{
 		this->type = dog.type;
+		if (dog._brain != NULL)
+			this->_brain = dog._brain;
+	}
 	// std::cout << "Dog animal" << dog.type << "successfully copied" << std::endl;
 	return (*this);
 }
@@ -53,4 +57,17 @@ void Dog::makeSound() const
 		return ;
 	}
 	std::cout << this->type << ": Woof." << std::endl;
+}
+
+std::string	Dog::getIdea(unsigned int idx)
+{
+	if (this->_brain)
+		return (this->_brain->getIdea(idx));
+	return NULL;
+}
+void	Dog::setIdea(unsigned int idx, std::string s)
+{
+	if (this->_brain)
+		this->_brain->setIdea(idx, s);
+	return ;
 }

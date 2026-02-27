@@ -14,6 +14,7 @@
 # define ANIMALS_H
 
 #include <iostream>
+#include <sstream>
 
 class Animal
 {
@@ -24,7 +25,7 @@ class Animal
 		Animal(std::string type);
 		Animal(const Animal &animal);
 		virtual ~Animal();
-		Animal &operator=(const Animal &animal);
+		virtual Animal &operator=(const Animal &animal);
 		void setType(std::string type);
 		std::string getType(void) const;
 		virtual	void	makeSound()  const;
@@ -35,11 +36,12 @@ class Brain
 	private:
 		std::string *ideas;
 	public:
-		Brain();
-		~Brain();
+		Brain(void);
 		Brain(Brain &brain);
-		std::string	getIdea(unsigned int idx);
-		void	setIdea(unsigned int idx, std::string s);
+		virtual ~Brain();
+		Brain &operator=(const Brain &brain);
+		virtual std::string	getIdea(unsigned int idx);
+		virtual void	setIdea(unsigned int idx, std::string s);
 };
 
 class Dog : public Animal
@@ -47,11 +49,12 @@ class Dog : public Animal
 	private:
 		Brain *_brain;
 	public:
-		Dog();
+		Dog(void);
 		~Dog();
 		Dog(const Dog &dog);
 		Dog &operator=(const Dog &dog);
-
+		std::string	getIdea(unsigned int idx);
+		void	setIdea(unsigned int idx, std::string s);
 		void	makeSound() const;
 };
 
@@ -66,6 +69,8 @@ class Cat : public Animal
 		Cat &operator=(const Cat &cat);
 
 		void	makeSound() const;
+		std::string	getIdea(unsigned int idx);
+		void	setIdea(unsigned int idx, std::string s);
 };
 
 #endif

@@ -33,14 +33,18 @@ Cat::Cat(const Cat &cat) : Animal(cat.type)
 Cat::~Cat()
 {
 	if (this->_brain != NULL)
-		delete _brain;
+		delete this->_brain;
 	std::cout << "Cat destroyed" << this->type << std::endl;
 }
 
 Cat &Cat::operator=(const Cat &cat)
 {
 	if (this != &cat)
+	{
 		this->type = cat.type;
+		if (cat._brain != NULL)
+			this->_brain = cat._brain;
+	}
 	// std::cout "cat animal" << cat.type << "successfully copied" << std::endl;
 	return (*this);
 }
@@ -53,4 +57,17 @@ void Cat::makeSound() const
 		return ;
 	}
 	std::cout << this->type << ": Meow." << std::endl;
+}
+
+std::string	Cat::getIdea(unsigned int idx)
+{
+	if (this->_brain)
+		return (this->_brain->getIdea(idx));
+	return "";
+}
+void	Cat::setIdea(unsigned int idx, std::string s)
+{
+	if (this->_brain)
+		this->_brain->setIdea(idx, s);
+	return ;
 }
