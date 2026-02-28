@@ -36,6 +36,7 @@ int main(void)
 	for(unsigned int x = 0; x < 100; x++)
 		delete ar[x];
 	delete[] ar;
+	
 	Dog a = Dog();
 	Cat b = Cat();
 	for(unsigned int x = 0; x < 103; x++)
@@ -50,6 +51,8 @@ int main(void)
 		b.makeSound();
 		std::cout << b.getIdea(x) << std::endl;
 	}		
+
+	std::cout << "created and destroyed !\n" << std::endl;
 
 	std::cout << "created and destroyed !\n" << std::endl;
 	// Animal* j = new Dog();

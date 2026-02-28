@@ -29,22 +29,25 @@ int main(void)
 	// ar[0][0]->setType("Dog");
 	// std::cout << ar[0]->getType() << std::endl;
 	// delete[] ar; // impossible d'instancier la classe car virtuelle
-	Dog a = Dog();
-	Cat b = Cat();
-	for(unsigned int x = 0; x < 103; x++)
-	{
-		a.setIdea(x, "Dog idea n°" + itoa(x));
-		b.setIdea(x, "Cat idea n°" + itoa(x));
-	}
-	for(unsigned int x = 0; x < 103; x++)
-	{
-		a.makeSound();
-		std::cout << a.getIdea(x) << std::endl;
-		b.makeSound();
-		std::cout << b.getIdea(x) << std::endl;
-	}		
+	
+	
+	
+	// Dog a = Dog();
+	// Cat b = Cat();
+	// for(unsigned int x = 0; x < 103; x++)
+	// {
+	// 	a.setIdea(x, "Dog idea n°" + itoa(x));
+	// 	b.setIdea(x, "Cat idea n°" + itoa(x));
+	// }
+	// for(unsigned int x = 0; x < 103; x++)
+	// {
+	// 	a.makeSound();
+	// 	std::cout << a.getIdea(x) << std::endl;
+	// 	b.makeSound();
+	// 	std::cout << b.getIdea(x) << std::endl;
+	// }		
 
-	std::cout << "created and destroyed !\n" << std::endl;
+	// std::cout << "created and destroyed !\n" << std::endl;
 	// Animal* j = new Dog();
 	// Animal* i = new Cat();
 	// const WrongAnimal* m = new WrongCat();
