@@ -1,0 +1,76 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animals.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/25 14:44:58 by gule-bat          #+#    #+#             */
+/*   Updated: 2026/02/25 14:44:58 by gule-bat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef ANIMALS_H
+# define ANIMALS_H
+
+#include <iostream>
+#include <sstream>
+
+class Animal
+{
+	protected:
+		std::string type;
+		Animal(std::string type);
+		Animal(void);
+		Animal(const Animal &animal);
+	public:
+		virtual ~Animal();
+		Animal &operator=(const Animal &animal);
+		void setType(std::string type);
+		std::string getType(void) const;
+		virtual	void	makeSound() const = 0;
+};
+
+class Brain
+{
+	private:
+		std::string *ideas;
+	public:
+		Brain(void);
+		Brain(Brain &brain);
+		virtual ~Brain();
+		Brain &operator=(const Brain &brain);
+		virtual std::string	getIdea(unsigned int idx);
+		virtual void	setIdea(unsigned int idx, std::string s);
+};
+
+class Dog : public Animal
+{
+	private:
+		Brain *_brain;
+	public:
+		Dog(void);
+		~Dog();
+		Dog(const Dog &dog);
+		Dog &operator=(const Dog &dog);
+		std::string	getIdea(unsigned int idx);
+		void	setIdea(unsigned int idx, std::string s);
+		void	makeSound() const;
+};
+
+class Cat : public Animal
+{
+	private:
+		Brain *_brain;
+	public:
+		Cat();
+		~Cat();
+		Cat(const Cat &cat);
+		Cat &operator=(const Cat &cat);
+
+		void	makeSound() const;
+		std::string	getIdea(unsigned int idx);
+		void	setIdea(unsigned int idx, std::string s);
+};
+
+#endif
