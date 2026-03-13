@@ -25,15 +25,15 @@ AForm::AForm(const std::string name, const int grade, const int grade_e) : _name
 {
 	ExceptionCheckGrade(grade);
 	ExceptionCheckGrade(grade_e);
-	std::cout << "Form " << this->_name << ", grade: " << this->_grade << ", grade to exec:" << this->_grade_e <<" created\n";
+	std::cout << "Form " << this->_name << ", grade: " << this->_grade << ", grade to exec: " << this->_grade_e <<" created\n";
 }
 AForm::~AForm()
 {
-	std::cout << "Form " << this->_name << " signed:" << this->getStatus() << ", grade: " << this->_grade << ", grade to exec:" << this->_grade_e << " got destroyed\n";
+	std::cout << "\tForm " << this->_name << " signed:" << this->getStatus() << ", grade: " << this->_grade << ", grade to exec: " << this->_grade_e << " got destroyed\n";
 }
 AForm &AForm::operator=(const AForm &aform)
 {
-	std::cout << "Form " << this->_name << ", is at the same grade : " << this->_grade << ", grade to exec:" << this->_grade_e << ", grades cannot be cloned from" << aform.getName() << "\n";
+	std::cout << "Form " << this->_name << ", keep it's grade : " << this->_grade << ", grade to exec: " << this->_grade_e << ", grades cannot be cloned from " << aform.getName() << "\n";
 	return (*this);
 }
 

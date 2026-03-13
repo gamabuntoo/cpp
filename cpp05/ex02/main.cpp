@@ -12,19 +12,35 @@
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int	main(void)
 {
 	Bureaucrat a1 = Bureaucrat("Serge", 1);
-	Aform		f1 = Aform("Sondage", 150, 150);
-	a1.signAform(f1);
+	// Aform		f1 = Aform("Sondage", 150, 150);
+	// a1.signAform(f1);
 
 	std::cout << "\n\n";
 	Bureaucrat a2 = Bureaucrat("Roger", 150);
-	Aform		f2 = Aform("Sondage", 15, 15);
-	a2.signAform(f2);
+	PresidentialPardonForm		f2 = PresidentialPardonForm("roger");
+	// a2.signAform(f2);
+	a1.signForm(f2);
+	a1.executeForm(f2);
 	std::cout << "\n\n";
 	std::cout << "\n\n";
+	Bureaucrat a3 = Bureaucrat("Roger", 11);
+	RobotomyRequestForm		f3 = RobotomyRequestForm("roger");
+	a3.signForm(f3);
+	a3.executeForm(f3);
+	std::cout << "\n\n";
+	std::cout << "\n\n";
+	Bureaucrat a4 = Bureaucrat("Roger", 11);
+	ShrubberyCreationForm		f4 = ShrubberyCreationForm("arbre");
+	a4.signForm(f4);
+	a2.executeForm(f4);
+	// std::cout << "\n test try catch\n";
 	// std::cout << "\n test try catch\n";
 	// try
 	// {

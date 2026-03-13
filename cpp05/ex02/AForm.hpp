@@ -16,6 +16,10 @@
 #include <iostream>
 #include <sstream>
 #include <stdint.h>
+#include <unistd.h>
+#include <cstdlib>
+#include <fstream>
+// #include <time
 
 class Bureaucrat;
 
@@ -53,7 +57,8 @@ class AForm
 			int		getStatus(void) const;
 			// void	IncrementGrade(void);
 			// void	DecrementGrade(void);
-			virtual void	beSigned(Bureaucrat &bureaucrat); // !! pas sur
+			void	beSigned(Bureaucrat &bureaucrat);
+			virtual void	execute(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream &operator<<(std::ostream &os, AForm const &b);
