@@ -6,7 +6,7 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 16:13:58 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/03/13 17:31:46 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/03/13 17:30:31 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	srand(time(0));
 	int y = 1+rand() % 2;
+
 	if (this->getStatus() != 1)
 		throw FormNotSignedException();
 	else if (executor.getGrade() >= this->getGrade_e())
