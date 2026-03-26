@@ -78,17 +78,6 @@ static char	char_converter(std::string in)
 	return 0;
 }
 
-// static int	int_converter(std::string in)
-// {
-// 	long long int	x = 0;
-
-// 	x = std::atoll(in.c_str());
-// 	if (x < -2147483648 || x > 2147483647)
-// 	{		print_char("int", "impossible", 1);		return ;	}
-// 	print_char("int", itoa(x), 1);
-// 	return ;
-// }
-
 int	is_num_str(std::string in)
 {
 	int i = 0;
@@ -150,7 +139,6 @@ static int	search_type(std::string in)
 				break;
 			x = p;
 		}
-		std::cout << x << " " << static_cast<int>(in.size()) << std::endl;
 		if (x == static_cast<int>(in.size())-1)
 			return (4);
 		if (static_cast<int>(in.find("f", i)) > x && static_cast<int>(in.size()) - 2 == x)
