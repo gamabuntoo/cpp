@@ -12,72 +12,71 @@
 
 #include "Conversion.hpp"
 
-// static std::string	itoa(int x)
-// {
-// 	std::stringstream str;
-// 	str << x;
-// 	std::string r;
-// 	str >> r;
-// 	return r;
-// }
+static std::string	itoa(int x)
+{
+	std::stringstream str;
+	std::string r;
 
-// // static int parseFilter(std::string in)
-// // {
-// // 	if (in.size() == 0)
-// // 		return (std::cerr << "Input cannot be empty", 1)
+	str << x;
+	str >> r;
+	return r;
+}
 
-// // }
+static std::string	ftoa(float x, int pr)
+{
+	std::stringstream str;
+	std::string r;
 
+	str << std::fixed << std::setprecision(pr) << x << "f";
+	str >> r;
+	return r;
+}
 
-// // static int	hasComma(std::string in)
-// // {
-// // 	for (int x = 0; in[x]; x++)
-// // 	{
-// // 		if (in[x] == ",")
-// // 			return (x);
-// // 	}
-// // 	return (0);
-// // }
+static std::string	dtoa(double x, int pr)
+{
+	std::stringstream str;
+	std::string r;
 
-// static void	print_char(std::string type, std::string letter, int fl)
-// {
-// 	std::cout << type << ": ";
-// 	if (!fl)
-// 	{
-// 		std::cout << "'" << letter << "'" << std::endl;
-// 		return ;
-// 	}
-// 	std::cout << letter << std::endl;
-// }
+	str << std::fixed << std::setprecision(pr) << x;
+	str >> r;
+	return r;
+}
 
-// static char	char_converter(std::string in)
-// {
-// 	char c;
+static void	print_char(std::string type, std::string letter, int fl)
+{
+	std::cout << type << ": ";
+	if (!fl)
+	{
+		std::cout << "'" << letter << "'" << std::endl;
+		return ;
+	}
+	std::cout << letter << std::endl;
+}
 
-// 	int	x;
-// 	x = std::atol(in.c_str());
-// 	if (x >= 32 && x <= 126)
-// 	{
-// 		c = x;
-// 		std::string str;
-// 		str.push_back(c);
-// 		print_char("char", str, 0);
-// 		return ;
-// 	}
-// 	else if (x > 0 && x < 32)
-// 		print_char("char", "Non displayable", 1);
-// 	else
-// 		print_char("char", "impossible", 2);
-// }
-// 	// if (hasComma(in))
-// 	// {
-// 		// int x = in.hasComma(); 
-// 		// for (int v = x; in[v]; v++)
-// 		// {
-// 			// if (in[v] != "0")
-// 			// {	print_char("Non displayable"); return ;	}
-// 		// }
-// 	// }
+static char	char_converter(std::string in)
+{
+	char c;
+
+	int	x;
+
+	if ((in[0] >= 32 && in[0] <= 126) && in.size() == 1) {
+		c = in[0];
+		return (print_char("char", in, 0), c);
+	}
+	x = std::atol(in.c_str());
+	if (x >= 32 && x <= 126)
+	{
+		c = x;
+		std::string str;
+		str.push_back(c);
+		return (print_char("char", str, 0), c);
+	}
+	else if (x > 0 && x < 32)
+		print_char("char", "Non displayable", 1);
+	else
+		print_char("char", "impossible", 2);
+	return 0;
+}
 
 // static int	int_converter(std::string in)
 // {
@@ -104,12 +103,25 @@ int	is_num_str(std::string in)
 	return (0);
 }
 
-static int	search_type(std::string in)
+static int	is_ok(std::string in)
 {
+	if (in == "nan" || in == "-inf" || in == "+inf")
+		return (4);
+	else if (in == "nanf" || in == "-inff" || in == "+inff")
+		return (3);
+	else
+		return (0);
+}
+
+static int	search_type(std::string in)
+{	
+	int x = 0;
+
+	if (in.empty())
+		return (0);
+	if (is_ok(in))
+		return (is_ok(in));
 	int z = static_cast<int>(in.find("."));
-	std::cout << z << " " << is_num_str(in) << std::endl;
-	
-	std::cout << (static_cast<int>(in.find("."))) << " " << (static_cast<int>(in.size())) << std::endl;
 	if (in.size() == 1)
 	{
 		if (in[0] >= 48 && in[0] <= 57)
@@ -117,18 +129,19 @@ static int	search_type(std::string in)
 		else if (in[0] >= 32 && in[0] <= 126)
 			return (1);
 	}
-	else if (z == -1 && is_num_str(in) >= 0)
+	if (in.size() > 1 && (in[0] == '-' || in[0] == '+'))
+	{ in.erase(0, 1); z = static_cast<int>(in.find(".")); }
+	if (z <= 0 && is_num_str(in) >= 0)
 		return (2);
-	else if ((static_cast<int>(in.size()) >= 3) && (static_cast<int>(in.find(".")) + 1 <= static_cast<int>(in.size())))
+	else if ((static_cast<int>(in.size()) >= 3) && z + 1 <= static_cast<int>(in.size()))
 	{
-		int x = 0;
 		for (int t = 0; in[t]; t++)
 		{
 			if (!std::isdigit(in[t]))
 				break;
 			x = t;
 		}
-		int i = in.find(".")+1;
+		int i = z+1;
 		if (!(x == i-2))
 			return (0);
 		for (int p = i; in[p]; p++)
@@ -141,24 +154,28 @@ static int	search_type(std::string in)
 		if (x == static_cast<int>(in.size())-1)
 			return (4);
 		if (static_cast<int>(in.find("f", i)) > x && static_cast<int>(in.size()) - 2 == x)
-		{
 			return (3);
-		}
-
 	}
 	return (0);
 }
 
+static void char_mixer(std::string in)
+{
+	char c = char_converter(in);
+	print_char("int", itoa(c), 1);
+	print_char("float", ftoa(c, 1), 1);
+	print_char("double", dtoa(c, 1), 1);
+}
+
 void	ScalarConverter::convert(std::string in)
 {
-	// if (parseFilter(in) == 1)
 	int i;
-
 	i = search_type(in);
 	switch (i)
 	{
 		case 1:
 			std::cout << "char" << std::endl;
+			char_mixer(in);
 		break;
 		case 2:
 			std::cout << "int" << std::endl;
