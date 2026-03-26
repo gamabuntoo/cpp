@@ -167,9 +167,94 @@ static void char_mixer(std::string in)
 	print_char("double", dtoa(c, 1), 1);
 }
 
+static void int_mixer(std::string in)
+{
+	long long int c = std::strtoll(in.c_str(), NULL, 10);
+
+	if ((c + '0' >= 32) && c + '0' <= 126) 
+		print_char("char", itoa(c + '0'), 0);
+	else
+		print_char("char", "Non displayable", 0);
+
+	if (c > RAND_MAX || c < -RAND_MAX)
+		print_char("int", "impossible", 0);
+	else
+		print_char("int", itoa(c), 1);
+
+	if (c > __FLT_MAX__ || c < -__FLT_MAX__)
+		print_char("float", "impossible", 1);
+	else
+		print_char("float", ftoa(c, 1), 1);
+
+	if (c > __DBL_MAX__ || c < -__DBL_MAX__)
+		print_char("double", "impossible", 1);
+	else
+		print_char("double", dtoa(c, 1), 1);
+}
+
+static void float_mixer(std::string in)
+{
+	float c = std::strtof(in.c_str(), NULL);
+
+	if ((c + '0' >= 32) && c + '0' <= 126) 
+		print_char("char", itoa(c + '0'), 0);
+	else
+		print_char("char", "Non displayable", 0);
+
+	if (c > RAND_MAX || c < -RAND_MAX)
+		print_char("int", "impossible", 0);
+	else
+		print_char("int", itoa(c), 1);
+
+	int z = 0;
+	int v = in.find(".");
+	while (in[v] && in[v] != 'f')
+	{ z++; v++; }
+	v = z-1;
+	if (c > __FLT_MAX__ || c < -__FLT_MAX__)
+		print_char("float", "impossible", 1);
+	else
+		print_char("float", ftoa(c, v), 1);
+
+	if (c > __DBL_MAX__ || c < -__DBL_MAX__)
+		print_char("double", "impossible", 1);
+	else
+		print_char("double", dtoa(c, v), 1);
+}
+
+static void double_mixer(std::string in)
+{
+	double c = std::strtod(in.c_str(), NULL);
+
+	if ((c + '0' >= 32) && c + '0' <= 126) 
+		print_char("char", itoa(c + '0'), 0);
+	else
+		print_char("char", "Non displayable", 0);
+
+	if (c > RAND_MAX || c < -RAND_MAX)
+		print_char("int", "impossible", 0);
+	else
+		print_char("int", itoa(c), 1);
+
+	int z = 0;
+	int v = in.find(".");
+	while (in[v] && in[v] != 'f')
+	{ z++; v++; }
+	v = z-1;
+	if (c > __FLT_MAX__ || c < -__FLT_MAX__)
+		print_char("float", "impossible", 1);
+	else
+		print_char("float", ftoa(c, v), 1);
+
+	if (c > __DBL_MAX__ || c < -__DBL_MAX__)
+		print_char("double", "impossible", 1);
+	else
+		print_char("double", dtoa(c, v), 1);
+}
+
 void	ScalarConverter::convert(std::string in)
 {
-	int i;
+	int i = 0;
 	i = search_type(in);
 	switch (i)
 	{
@@ -179,18 +264,17 @@ void	ScalarConverter::convert(std::string in)
 		break;
 		case 2:
 			std::cout << "int" << std::endl;
+			int_mixer(in);
 		break;	
 		case 3:
 			std::cout << "float" << std::endl;
+			float_mixer(in);
 		break;	
 		case 4:
 			std::cout << "double" << std::endl;
+			double_mixer(in);
 		break;
 		default:
 			std::cout << "aaaa" << std::endl;
 	}
-	// char_converter(in);
-	// int_converter(in);
-	// float_converter(in);
-	// double_converter(in);
 }
