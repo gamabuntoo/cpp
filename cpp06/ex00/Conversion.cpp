@@ -12,6 +12,12 @@
 
 #include "Conversion.hpp"
 
+ScalarConverter::ScalarConverter()
+{ }
+
+ScalarConverter:: ~ScalarConverter()
+{ }
+
 static std::string	itoa(int x)
 {
 	std::stringstream str;
@@ -160,7 +166,8 @@ static void int_mixer(std::string in)
 	long long int c = std::strtoll(in.c_str(), NULL, 10);
 
 	if ((c + '0' >= 32) && c + '0' <= 126) 
-		print_char("char", itoa(c + '0'), 0);
+		// print_char("char", itoa(c + '0'), 0);
+		char_converter(in);
 	else
 		print_char("char", "Non displayable", 0);
 
@@ -186,7 +193,8 @@ static void float_mixer(std::string in)
 
 
 	if ((c + '0' >= 32) && c + '0' <= 126) 
-		print_char("char", itoa(c + '0'), 0);
+		// print_char("char", , 0);
+		char_converter(in);
 	else
 		print_char("char", "Non displayable", 0);
 
@@ -215,8 +223,9 @@ static void double_mixer(std::string in)
 {
 	double c = std::strtod(in.c_str(), NULL);
 
-	if ((c + '0' >= 32) && c + '0' <= 126) 
-		print_char("char", itoa(c + '0'), 0);
+	if ((c + '0' >= 32) && c + '0' <= 126)
+		char_converter(in); 
+		// print_char("char", itoa(c + '0'), 0);
 	else
 		print_char("char", "Non displayable", 0);
 

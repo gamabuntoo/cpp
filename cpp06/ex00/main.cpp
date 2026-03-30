@@ -18,4 +18,6 @@ int main(int argc, char **argv)
 		return 1;
 	std::string str = argv[1];
 	ScalarConverter::convert(str);
+	// ScalarConverter sc;
+	// (void)sc;
 }

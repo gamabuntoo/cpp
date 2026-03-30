@@ -22,8 +22,11 @@
 
 class	ScalarConverter
 {
+	protected:
+		ScalarConverter();
 	public:
 		static void	convert(std::string in);
+		virtual ~ScalarConverter();
 };
 
 #endif
