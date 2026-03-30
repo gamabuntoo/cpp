@@ -164,7 +164,7 @@ static void int_mixer(std::string in)
 	else
 		print_char("char", "Non displayable", 0);
 
-	if (c > RAND_MAX || c < -RAND_MAX)
+	if ((c > RAND_MAX || c < -RAND_MAX))
 		print_char("int", "impossible", 0);
 	else
 		print_char("int", itoa(c), 1);
@@ -184,12 +184,13 @@ static void float_mixer(std::string in)
 {
 	float c = std::strtof(in.c_str(), NULL);
 
+
 	if ((c + '0' >= 32) && c + '0' <= 126) 
 		print_char("char", itoa(c + '0'), 0);
 	else
 		print_char("char", "Non displayable", 0);
 
-	if (c > RAND_MAX || c < -RAND_MAX)
+	if (c > RAND_MAX || c < -RAND_MAX || is_ok(in))
 		print_char("int", "impossible", 0);
 	else
 		print_char("int", itoa(c), 1);
