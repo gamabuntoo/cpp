@@ -6,7 +6,7 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 19:47:07 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/05/04 20:41:54 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/05/04 20:43:32 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,5 @@ int	main(int argc, char **argv)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
-	// if (p == v.end())
-		// return (-1);
 	return (1);
 }
