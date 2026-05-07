@@ -6,7 +6,7 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 18:55:52 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/04/24 16:35:56 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/05/07 18:44:22 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ Array<T>::Array(const Array &src) : _size(src._size)
 	*this = src;
 }
 
-
-
-
 template <typename T>
 void Array<T>::execpt_op(unsigned int s)
 {
@@ -69,8 +66,6 @@ T& Array<T>::operator[](unsigned int s)
 {
 	try
 	{
-		if (s >= this->_size)
-			std::cerr << "OUT OF BOUNDS EXCEPTION\n"; 
 		execpt_op(s);
 	}
 	catch (const std::exception &e)
