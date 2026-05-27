@@ -6,7 +6,7 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 12:38:56 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/05/07 18:41:47 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/05/27 19:08:07 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int		Span::longestSpan()
 void	Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
 	if (sp.size() + std::distance(begin, end) > s)
-		throw std::runtime_error("!!! cannot add values to span class, max size: " + s);
+		throw std::runtime_error("!!! can't add more values to the span class, max size reached: " + s);
 
 	for (std::vector<int>::iterator a = begin; a != end; a++)
 	{
