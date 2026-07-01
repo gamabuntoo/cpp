@@ -6,7 +6,7 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 16:28:55 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/07/01 18:23:21 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/07/01 18:35:59 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	Btc_dataset::get_input_file()
 	while (std::getline(this->file, str))
 	{
 		if (str.empty())
-			return (-1);
+			throw std::runtime_error("Error: empty line.");
 		std::string date;
 		float		amount = 0;
 		int x = str.find('|', 0);
@@ -55,21 +55,22 @@ int	Btc_dataset::get_input_file()
 			throw std::runtime_error("Error: input: alphanumeric value after line 0.");
 		date = str.substr(0, x - 1);
 		amount = atof(&str[x + 1]);
-	
-// PLEINS DE CONDITONS GO SLEEP MTN
 		if (!check_value(str, date, amount))
 			return (-1);
+
 		std::map<std::string, float>::iterator i = data.lower_bound(date);
 		if (i == this->data.end())
 			throw std::runtime_error("Error: input date:" + date);
 		else
-			std::cout << date << " => " << amount << " = "<< amount * i->second << "€" << std::endl;
-			// std::cout << date << " : " << " value :" << i->second << " Amount: "<< amount * i->second << "€" << std::endl;
+			std::cout << date << " => " << amount << " = "<< amount * i->second << std::endl;
 		f++;
 	}
 	return (0);
 }
 
+// std::cout << date << " : " << " value :" << i->second << " Amount: "<< amount * i->second << "€" << std::endl;
+
+	
 int	Btc_dataset::get_database()
 {
 	std::ifstream 		data("data.csv");
@@ -112,7 +113,7 @@ Btc_dataset::Btc_dataset(std::string input_txt)
 		throw std::runtime_error("Database exchange rate error");
 	file.open(input_txt.c_str());
 	if (!file.is_open() || (input_txt.find(".txt") == std::string::npos || input_txt.size() == 4))
-		throw std::runtime_error("Error while opening " + input_txt);
+		throw std::runtime_error("Error: couldn't open " + input_txt);
 	while (file.good())
 	{
 		try
