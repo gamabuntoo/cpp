@@ -6,7 +6,7 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 16:28:51 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/07/01 04:02:45 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/07/01 18:02:01 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class   Btc_dataset {
         int	get_input_file();
         Btc_dataset &operator=(const Btc_dataset &p);
         int check_line(std::string line);
+		int	check_value(std::string str, std::string date, float amnt);
         int get_database();
         
         ~Btc_dataset();

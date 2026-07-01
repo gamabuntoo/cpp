@@ -6,11 +6,33 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 16:28:55 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/07/01 04:47:10 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/07/01 18:23:21 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+int	Btc_dataset::check_value(std::string str, std::string date, float amnt)
+{
+	std::string y = date.substr(0, 4);
+	std::string m = date.substr(5, 2);
+	std::string d = date.substr(8, 2);
+	long int val[3] = {std::atol(y.c_str()), std::atol(m.c_str()), std::atol(d.c_str())};
+	if (val[0] < 2009 || val[0] > 2022)
+		throw std::runtime_error("Error: bad input => " + date);
+	if (val[1] < 0 || val[1] > 12)
+		throw std::runtime_error("Error: bad input => " + date);
+	if (val[2] < 0 || val[2] > 31)
+		throw std::runtime_error("Error: bad input => " + date);
+	if (amnt < 0)
+		throw std::runtime_error("Error: not a positive number.");
+	if (amnt > 1000 && atof(date.c_str()) != amnt)
+		throw std::runtime_error("Error: Value too large.");
+	if (str.size() <= 12)
+		throw std::runtime_error("Error: Wallet amount missing : " + str);
+
+	return (1);
+}
 
 int	Btc_dataset::get_input_file()
 {
@@ -30,21 +52,19 @@ int	Btc_dataset::get_input_file()
 			continue ;
 		}
 		if (std::isalpha(str[0]) && f != 0)
-			throw std::runtime_error("error input alphanumeric value after line 0");
+			throw std::runtime_error("Error: input: alphanumeric value after line 0.");
 		date = str.substr(0, x - 1);
 		amount = atof(&str[x + 1]);
-		if (amount < 0 || amount > 1000)
-			throw std::runtime_error("Error: Value higher than 1000 or lower than 0");
-		if (str.size() <= 12)
-			throw std::runtime_error("Error: Wallet amount missing :" + str);
 	
 // PLEINS DE CONDITONS GO SLEEP MTN
-		
+		if (!check_value(str, date, amount))
+			return (-1);
 		std::map<std::string, float>::iterator i = data.lower_bound(date);
 		if (i == this->data.end())
 			throw std::runtime_error("Error: input date:" + date);
 		else
-			std::cout << date << " : " << " value :" << i->second << " Amount: "<< amount * i->second << "€" << std::endl;
+			std::cout << date << " => " << amount << " = "<< amount * i->second << "€" << std::endl;
+			// std::cout << date << " : " << " value :" << i->second << " Amount: "<< amount * i->second << "€" << std::endl;
 		f++;
 	}
 	return (0);
