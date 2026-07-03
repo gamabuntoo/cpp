@@ -6,7 +6,7 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 16:28:51 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/07/01 18:30:16 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/07/02 22:12:29 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <iostream>
 #include <fstream>
 #include <iterator>
-#include <vector>
 #include <algorithm>
 #include <sstream>
 #include <string>
