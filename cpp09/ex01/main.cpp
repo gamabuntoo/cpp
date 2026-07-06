@@ -6,7 +6,7 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 14:55:39 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/07/03 14:58:39 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/07/06 15:23:32 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	try
 	{
 		RPN_calculator r(av);
+		r.calc_rpn();
 	}
 	catch(const std::exception& e)
 	{
