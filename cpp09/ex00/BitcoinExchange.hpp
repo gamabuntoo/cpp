@@ -6,7 +6,7 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 16:28:51 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/07/02 22:12:29 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/07/03 15:24:40 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ class   Btc_dataset {
 		int	check_value(std::string str, std::string date, float amnt);
 		int get_database();
 };
-
