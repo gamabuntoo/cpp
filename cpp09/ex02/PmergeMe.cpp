@@ -6,11 +6,18 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 21:39:51 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/09/01 00:07:11 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/09/01 00:42:35 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+
+// template <typename T>
+// void PmergeMe::sort(const T& ptr)
+// {
+// 		T.
+// }
 
 // void PmergeMe::start
 
@@ -56,8 +63,6 @@ void	PmergeMe::display()
 
 PmergeMe::~PmergeMe()
 {
-
-	
 }
 
 int	Parser(std::vector<long int> &v, std::list<long int> &l, char **argv, int argc)

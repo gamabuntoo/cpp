@@ -6,7 +6,7 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 21:39:52 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/09/01 00:02:17 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/09/01 00:42:40 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ class	PmergeMe
 		PmergeMe 	&operator=(const PmergeMe &src);
 		~PmergeMe();
 		void		display();
+		// template <typename T> void sort(const T& ptr);
 };
 
 int	Parser(std::vector<long int> &v, std::list<long int> &l, char **argv, int argc);

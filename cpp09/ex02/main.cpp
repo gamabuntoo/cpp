@@ -6,7 +6,7 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 21:39:45 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/09/01 00:27:02 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/09/01 00:32:23 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,12 @@ int main(int argc, char *argv[])
 		std::cout << "After :\t";
 		p.display();
 		std::cout << "\n\n";
-		std::cout << "Time to process a range of " << size << " elements with std::vector\t<int> :\t" << std::fixed << std::setprecision(5) << res_v << " s" << std::endl;
-		std::cout << "Time to process a range of " << size << " elements with std::list\t<int> :\t" << std::fixed << std::setprecision(5) << res_l << " s" << std::endl;
+		std::cout << "Time to process a range of " << size << 
+			" elements with std::vector\t<int> :\t" << std::fixed << std::setprecision(5) 
+			<< res_v << " s" << std::endl;
+		std::cout << "Time to process a range of " << size << 
+			" elements with std::list\t<int> :\t" << std::fixed << std::setprecision(5) 
+			<< res_l << " s" << std::endl;
 	}
 	catch(const std::exception& e)
 	{
