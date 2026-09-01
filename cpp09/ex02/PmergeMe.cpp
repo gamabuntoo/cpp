@@ -6,34 +6,37 @@
 /*   By: gule-bat <gule-bat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 21:39:51 by gule-bat          #+#    #+#             */
-/*   Updated: 2026/09/01 00:42:35 by gule-bat         ###   ########.fr       */
+/*   Updated: 2026/09/02 01:43:50 by gule-bat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-
-// template <typename T>
-// void PmergeMe::sort(const T& ptr)
-// {
-// 		T.
-// }
-
-// void PmergeMe::start
+void	PmergeMe::dispResults(int flag)
+{
+	if (res == -1)
+		throw std::runtime_error("PmergeMe::dispResults(double,double): Error timer value");
+	std::cout << "Time to process a range of " << size;
+	if (flag == 1)
+		std::cout << " elements with std::vector\t<int> :\t";  
+	else
+		std::cout << " elements with std::list\t\t<int> :\t";
+	std::cout << std::fixed << std::setprecision(5)	<< res << " s" << std::endl;
+}
 
 PmergeMe::PmergeMe()
 {
 	
 }
 
-PmergeMe::PmergeMe(std::vector<long int> vec, std::list<long int> list, int size)
+void 	PmergeMe::setContainer(std::list<long int>& l)
 {
-	this->vec = vec;
-	this->list = list;
-	this->size = size;
-	std::cout << "Before:\t";
-	display();
-	std::cout << "\n";
+	this->list = l;
+}
+
+void	PmergeMe::setContainer(std::vector<long int>& l)
+{
+	this->vec = l;
 }
 
 PmergeMe::PmergeMe(const PmergeMe &src)
@@ -54,29 +57,21 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src)
 	return (*this);
 }
 
-void	PmergeMe::display()
+void	PmergeMe::display(int x)
 {
-	for (std::vector<long int>::iterator x = vec.begin(); x != vec.end(); x++)
-		std::cout << *x << " ";
-	// std::cout << "\n";
+	if (x == 1)
+	{
+		for (std::vector<long int>::iterator x = vec.begin(); x != vec.end(); x++)
+			std::cout << *x << " ";
+	}
+	else
+	{
+		for (std::list<long int>::iterator x = list.begin(); x != list.end(); x++)
+			std::cout << *x << " ";		
+	}
 }
 
 PmergeMe::~PmergeMe()
 {
 }
 
-int	Parser(std::vector<long int> &v, std::list<long int> &l, char **argv, int argc)
-{
-	for (int x = 0; x < argc; x++)
-	{
-		long int val = std::atol(argv[x]);
-		if (val == 0 || val > 2147483647 || std::find(v.begin(), v.end(), val) != v.end())
-		{
-			std::cout << "PmergeMe::Parser:: Error input: " << argv[x] << std::endl;
-			return (-1);
-		}
-		v.push_back(val);
-		l.push_back(val);
-	}
-	return (v.size());
-}
